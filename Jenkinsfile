@@ -7,7 +7,7 @@ pipeline {
                 echo 'Create virtual environment...'
                 sh "virtualenv -p /usr/bin/python3 venv"
                 echo 'Activate virtual environment...'
-                sh "source ./venv/bin/activate"
+                sh ". ./venv/bin/activate"
                 echo 'Check...'
                 sh "python --version"
             }
