@@ -5,11 +5,11 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Create virtual environment...'
-                sh "virtualenv -p /usr/bin/python3 venv"
-                echo 'Activate virtual environment...'
-                sh ". ./venv/bin/activate"
-                echo 'Check...'
-                sh "python --version"
+                sh """
+                    virtualenv -p /usr/bin/python3 venv
+                    . ./venv/bin/activate
+                    python --version
+                """
             }
         }
     }
