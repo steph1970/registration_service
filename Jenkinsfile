@@ -8,7 +8,5 @@ pipeline {
                 sh ". ./venv/bin/activate && python --version"
             }
         }
-        stage('Venv'){
-        }
     }
 }
