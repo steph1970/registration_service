@@ -5,7 +5,10 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Building...'
+                sh ". ./venv/bin/activate && python --version"
             }
+        }
+        stage('Venv'){
         }
     }
 }
