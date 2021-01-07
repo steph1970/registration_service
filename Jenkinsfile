@@ -5,7 +5,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Building...'
-                sh ". ./venv/bin/activate && python --version"
+                sh "virtualenv -p /usr/bin/pythpn3 venv && source ./venv/bin/activate && python --version"
             }
         }
     }
