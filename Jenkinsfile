@@ -21,13 +21,14 @@ pipeline {
                     println branch
                     
                     def build_str  = "docker build -t svanerp/registration_service:" + branch + " ."
-                    build_str.execute()
+                    build = build_str.execute()
                     build.waitForOrKill(5000)
                     
-                    def login = "docker login -u credentials('DOCKER_HUB_USERNAME') -p credentials('DOCKER_HUB_PASSWORD')"
+                    def login = "docker login -u credentials('DOCKER_HUB_USERNAME') -p credentials('DOCKER_HUB_PASSWORD')".execute()
                     login.waitForOrKill(1000)
                     
-                    def push = "docker push svanerp/registration_service:" + branch
+                    def push_str = "docker push svanerp/registration_service:" + branch
+                    push = push_str.execute()
                     push.waitForOrKill(5000)
                 }
             }
