@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage ('Build/Publish Docker Image'){
+            steps {
+                script {
+                    def branch = env.GIT_BRANCH
+                    def b = branch.replaceAll('origin/', '')
+                    println b
+                }
+            }
+        }
         stage('Build'){
             steps {
                 echo 'Create virtual environment...'
