@@ -20,7 +20,8 @@ pipeline {
                     def branch = (env.GIT_BRANCH).replaceAll('origin/', '')
                     println branch
                     
-                    def build  = 'docker build -t svanerp/registration_service:${GIT_COMMIT} .'.execute()
+                    def build_str  = "docker build -t svanerp/registration_service:" + branch + " ."
+                    build_str.execute()
                     build.waitForOrKill(5000)
                     
                     def login = "docker login -u credentials('DOCKER_HUB_USERNAME') -p credentials('DOCKER_HUB_PASSWORD')"
