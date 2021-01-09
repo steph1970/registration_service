@@ -30,12 +30,12 @@ pipeline {
                     def login = "docker login -u credentials('DOCKER_HUB_USERNAME') -p credentials('DOCKER_HUB_PASSWORD')"
                     login.consumeProcessOutput(sout, serr)
                     login.waitForOrKill(1000)
-                    println "out> $sout\nerr> $serr
+                    println "out> $sout\nerr> $serr"
                     
-                    def push = 'docker push svanerp/registration_service:' + branch
+                    def push = "docker push svanerp/registration_service:" + branch
                     push.consumeProcessOutput(sout, serr)
                     push.waitForOrKill(1000)
-                    println "out> $sout\nerr> $serr
+                    println "out> $sout\nerr> $serr"
                 }
             }
         }
