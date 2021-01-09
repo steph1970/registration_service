@@ -10,7 +10,7 @@ pipeline {
                     . ./venv/bin/activate
                     python --version
                     pip install -r requirements.txt
-                    export PYTHONPATH=$PYTHONPATH:.
+                    export PYTHONPATH=$WORKSPACE:$PYTHONPATH:.
                     python -m unittest tests/test_submission.py
                  """
             }
