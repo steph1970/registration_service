@@ -19,22 +19,15 @@ pipeline {
                 script {
                     def branch = (env.GIT_BRANCH).replaceAll('origin/', '')
                     println branch
-                    def sout = new StringBuilder(), serr = new StringBuilder()
                     
                     def build  = 'docker build -t svanerp/registration_service:${GIT_COMMIT} .'.execute()
-                    build.consumeProcessOutput(sout, serr)
-                    build.waitForOrKill(1000)
-                    println "out> $sout\nerr> $serr"
+                    build.waitForOrKill(5000)
                     
                     def login = "docker login -u credentials('DOCKER_HUB_USERNAME') -p credentials('DOCKER_HUB_PASSWORD')"
-                    login.consumeProcessOutput(sout, serr)
                     login.waitForOrKill(1000)
-                    println "out> $sout\nerr> $serr"
                     
                     def push = "docker push svanerp/registration_service:" + branch
-                    push.consumeProcessOutput(sout, serr)
-                    push.waitForOrKill(1000)
-                    println "out> $sout\nerr> $serr"
+                    push.waitForOrKill(5000)
                 }
             }
         }
